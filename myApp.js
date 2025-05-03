@@ -9,6 +9,10 @@ app.use("/public", function(req, res) {
     res.sendFile(absolutePath = __dirname + '/public/style.css');
 });
 
+app.get("/json", function(req, res) {
+    res.json({"message": "Hello json"});
+});
+
 console.log("Hello World");
 
 
