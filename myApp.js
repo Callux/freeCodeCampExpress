@@ -11,7 +11,7 @@ app.use("/public", function(req, res) {
 });
 
 app.get("/json", function (req, res, next) {
-    console.log(req.method, req.path, req.ip);
+    console.log(req.method + " " + req.path + " - " + req.ip);
     next();
 });
 
