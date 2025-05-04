@@ -10,9 +10,16 @@ app.use("/public", function(req, res) {
     res.sendFile(absolutePath = __dirname + '/public/style.css');
 });
 
-app.get("/json", function (req, res, next) {
+app.get("/json", function(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip);
     next();
+});
+
+app.get("/:word/echo", function(req, res, next) {
+    let word = req.params.word
+    next();
+}, function(req, res) {
+    res.json({"echo": word});
 });
 
 app.get("/now", function(req, res, next) {
