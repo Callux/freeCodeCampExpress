@@ -17,9 +17,8 @@ app.get("/json", function(req, res, next) {
 
 app.get("/:word/echo", function(req, res, next) {
     let word = req.params.word
-    next();
-}, function(req, res) {
     res.json({"echo": word});
+    next();
 });
 
 app.get("/now", function(req, res, next) {
