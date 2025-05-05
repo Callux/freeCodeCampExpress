@@ -11,7 +11,7 @@ app.use("/public", function(req, res) {
     res.sendFile(absolutePath = __dirname + '/public/style.css');
 });
 
-app.use(bodyParser.urlencoded({extended: false}));
+
 
 app.get("/json", function(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip);
@@ -24,11 +24,19 @@ app.get("/:word/echo", function(req, res, next) {
     next();
 });
 
-app.get("/name", function(req, res) {
+ app.get("/name", function(req, res) {
     var firstname = req.query.first;
     var lastname = req.query.last;
     res.json({"name": firstname + " " + lastname});
-})
+}) ;
+
+/* app.use(bodyParser.urlencoded({extended: false})); */
+
+app.post("/name", function(req, res) {
+    var firstname = req.body.first;
+    var lastname = req.body.last;
+    res.json({"name": firstname + " " + lastname});
+});
 
 app.get("/now", function(req, res, next) {
     req.time = new Date().toString();
