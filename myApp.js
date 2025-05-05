@@ -30,7 +30,7 @@ app.get("/:word/echo", function(req, res, next) {
     res.json({"name": firstname + " " + lastname});
 }) ;
 
-/* app.use(bodyParser.urlencoded({extended: false})); */
+app.use(bodyParser.urlencoded({extended: false})); 
 
 app.post("/name", function(req, res) {
     var firstname = req.body.first;
