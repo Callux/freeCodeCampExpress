@@ -16,10 +16,16 @@ app.get("/json", function(req, res, next) {
 });
 
 app.get("/:word/echo", function(req, res, next) {
-    let word = req.params.word
+    var word = req.params.word
     res.json({"echo": word});
     next();
 });
+
+app.get("/name", function(req, res) {
+    var firstname = req.query.first;
+    var lastname = req.query.last;
+    res.json({"name": firstname + " " + lastname});
+})
 
 app.get("/now", function(req, res, next) {
     req.time = new Date().toString();
