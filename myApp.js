@@ -1,4 +1,5 @@
 require('dotenv').config()
+let bodyParser = require('body-parser');
 let express = require('express');
 let app = express();
 
@@ -9,6 +10,8 @@ app.get("/", function(req, res) {
 app.use("/public", function(req, res) {
     res.sendFile(absolutePath = __dirname + '/public/style.css');
 });
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/json", function(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip);
